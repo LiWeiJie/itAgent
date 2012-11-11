@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" autopagermatchedrules="1">
+	<head>
+
+		<meta charset=UTF-8">
+		<title>欢迎参加计算机学院、软件学院IT特工向前冲活动</title>
+		<link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen">
+		<link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+			  padding-top: 60px;
+			  padding-bottom: 40px;
+			}
+		</style>
+	</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">IT特工向前冲</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+            <form class="navbar-form pull-right" id="login" action="@{ItHome.authenticate}" method="POST" accept-charset="${_response_encoding}">
+              <input class="span2" type="text" placeholder="队伍账号" value="${flash.username}" id="username">
+              <input class="span2" type="password" placeholder="密码" value="" id="password" >
+              
+              <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	<div class="container">
+		<div class="hero-unit">
+	        <h1>IT特工向前冲,六项技能大比拼</h1>
+	        <h2>恭喜你们<p>过五关斩六将之后终于来到了终极决战：电脑知识大抢答</p></h2>
+	        <p>本关分为**道选择题，**道问题题</p>
+	        <p>当你们准备好后请按下下面的start</p>
+	        <p><a class="btn btn-primary btn-large">start！</a></p>
+      	</div>
+     </div>
+   
+       
+      <script src="/public/js/bootstrap.min.js"></script>
+</body>
+</html>
