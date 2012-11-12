@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Administrator</title>
+	<link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen">
+	<link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
+	<script language="JavaScript">
+	function startQues(quesId) {
+	    console.log(quesId);
+	    var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+
+	    xmlhttp.open("GET","@{ItHome.startQues}?quesId="+quesId,true);
+	    xmlhttp.send();
+	}
+	</script>
+</head>
+<body>
+	<div class="container" id="mainBody">
+		<div class="hero-unit">
+			<button   class="btn" onclick="startQues(1)" }>Ques1</button>
+			<button   class="btn" onclick="startQues(2)" }>Ques2</button>
+			<button   class="btn" onclick="startQues(3)" }>Ques3</button>
+			<button   class="btn" onclick="startQues(4)" }>Ques4</button>
+			<button   class="btn" onclick="startQues(5)" }>Ques5</button>
+			<button   class="btn" onclick="startQues(6)" }>Ques6</button>
+			<button   class="btn" onclick="startQues(7)" }>Ques7</button>
+			<button   class="btn" onclick="startQues(8)" }>Ques8</button>
+			<button   class="btn" onclick="startQues(9)" }>Ques9</button>
+			<button   class="btn" onclick="startQues(10)" }>Ques10</button>
+			
+			
+		</div>
+	</div>
+	<
+</body>
+</html>

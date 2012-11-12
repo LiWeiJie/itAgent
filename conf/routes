@@ -5,6 +5,8 @@
 # Home page
 #GET     /                                       Application.index
 GET / ItHome.index
+GET /main ItHome.maintab
+GET /admin ItHome.admin
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
