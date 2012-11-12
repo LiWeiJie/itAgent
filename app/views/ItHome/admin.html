@@ -10,7 +10,7 @@
 	    console.log(quesId);
 	    var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
-
+	    console.log(xmlhttp); 
 	    xmlhttp.open("GET","@{ItHome.startQues}?quesId="+quesId,true);
 	    xmlhttp.send();
 	}

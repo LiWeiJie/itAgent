@@ -4,7 +4,7 @@ import play.mvc.Controller;
 
 public class ItHome extends Controller {
 	
-	private static int doingQue = 0;
+	
 	public static void index()
 	{
 		render();
@@ -28,11 +28,7 @@ public class ItHome extends Controller {
 		renderText(userName+password);
 	}
 	
-	public static void startQues(int quesId)
-	{
-		System.out.print(quesId);
-		doingQue = quesId;
-	}
+
 	
 	
 	

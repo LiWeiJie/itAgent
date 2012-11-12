@@ -20,4 +20,18 @@ public class Console extends Controller {
 		int str =problemTBService.getProblemsCount();
         renderText(str);
     }
+	
+	public static void getProblem(int id) throws SQLException {
+		int str =problemTBService.getProblemsCount();
+        renderText(str);
+    }
+	
+	private static int loadingQue = 0;
+	
+	public static void startQues(int quesId)
+	{
+		System.out.print(quesId);
+		loadingQue = quesId;
+		renderText(quesId);
+	}
 }
