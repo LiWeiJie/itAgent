@@ -27,9 +27,9 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
             </ul>
-            <form class="navbar-form pull-right" id="login" action="@{ItHome.authenticate}" method="POST" accept-charset="${_response_encoding}">
-              <input class="span2" type="text" placeholder="队伍账号" value="${flash.username}" id="username">
-              <input class="span2" type="password" placeholder="密码" value="" id="password" >
+            <form class="navbar-form pull-right" id="login" action="@{ItHome.authenticate}" method="POST" >
+              <input class="span2" type="text" placeholder="队伍账号"  name="userName">
+              <input class="span2" type="password" placeholder="密码"  name="password" >
               
               <button class="btn btn-large btn-primary" type="submit">Sign in</button>
             </form>
