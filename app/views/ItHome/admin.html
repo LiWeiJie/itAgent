@@ -9,9 +9,22 @@
 	function startQues(quesId) {
 	    console.log(quesId);
 	    var xmlhttp;
+	    if (window.XMLHttpRequest)
+	    {// code for IE7+, Firefox, Chrome, Opera, Safari
 	    xmlhttp=new XMLHttpRequest();
-
-	    xmlhttp.open("GET","@{ItHome.startQues}?quesId="+quesId,true);
+	    }
+	  	else
+	    {// code for IE6, IE5
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	    xmlhttp.onreadystatechange=function()
+	    {
+	    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	      {
+	      	Id("myDiv").innerHTML=xmlhttp.responseText;
+	      }
+	    }
+	    xmlhttp.open("POST","",true);
 	    xmlhttp.send();
 	}
 	</script>
@@ -20,17 +33,6 @@
 	<div class="container" id="mainBody">
 		<div class="hero-unit">
 			<button   class="btn" onclick="startQues(1)" }>Ques1</button>
-			<button   class="btn" onclick="startQues(2)" }>Ques2</button>
-			<button   class="btn" onclick="startQues(3)" }>Ques3</button>
-			<button   class="btn" onclick="startQues(4)" }>Ques4</button>
-			<button   class="btn" onclick="startQues(5)" }>Ques5</button>
-			<button   class="btn" onclick="startQues(6)" }>Ques6</button>
-			<button   class="btn" onclick="startQues(7)" }>Ques7</button>
-			<button   class="btn" onclick="startQues(8)" }>Ques8</button>
-			<button   class="btn" onclick="startQues(9)" }>Ques9</button>
-			<button   class="btn" onclick="startQues(10)" }>Ques10</button>
-			
-			
 		</div>
 	</div>
 	<
