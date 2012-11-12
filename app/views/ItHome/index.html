@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en" autopagermatchedrules="1">
+<html lang="en">
 	<head>
 
-		<meta charset=UTF-8">
+		<meta charset="UTF-8">
 		<title>欢迎参加计算机学院、软件学院IT特工向前冲活动</title>
 		<link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen">
 		<link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
@@ -12,6 +12,7 @@
 			  padding-bottom: 40px;
 			}
 		</style>
+		<script src="/public/js/changeBody.js"></script>
 	</head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -27,29 +28,38 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
             </ul>
-            <form class="navbar-form pull-right" id="login" action="@{ItHome.authenticate}" method="POST" >
-              <input class="span2" type="text" placeholder="队伍账号"  name="userName">
-              <input class="span2" type="password" placeholder="密码"  name="password" >
+            <form class="navbar-form pull-right" id="login"  method="POST" >
+              <input class="span2" type="password" placeholder="登陆密钥"  name="password" >
               
-              <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+              <button class="btn btn-large btn-inverse" type="submit">Sign in</button>
             </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-	<div class="container">
+	<div class="container" id="mainBody">
 		<div class="hero-unit">
 	        <h1>IT特工向前冲,六项技能大比拼</h1>
 	        <h2>恭喜你们<p>过五关斩六将之后终于来到了终极决战：电脑知识大抢答</p></h2>
 	        <p>本关分为1道选择题，1道问答题</p>
 	        <div class="row">
-				<div class="span3 offset2"><h2>Are you ready?</h2></div>
-				<div class="span3"><h2><a class="btn btn-primary btn-large">Start! >></a></h2></div>
+			
+				
 			</div>
+			<div class="container">
+
+				<form class="form-signin" >
+				  <div class="span3"><input type="password" class="input-block-level" placeholder="Password"></div>
+				  
+				  <div class="span3"><button class="btn btn-large btn-primary" type="submit" onclick="loadXMLDoc()">Sign in</button></div>
+				</form>
+
+    		</div>
       	</div>
+      		
      </div>
-   
-       
+
+      
       <script src="/public/js/bootstrap.min.js"></script>
 </body>
 </html>
