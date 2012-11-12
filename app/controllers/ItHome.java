@@ -31,7 +31,6 @@ public class ItHome extends Controller {
 	public static void startQues(int quesId)
 	{
 		System.out.print(quesId);
-		renderText(quesId);
 		doingQue = quesId;
 	}
 	
