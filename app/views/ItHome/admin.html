@@ -9,16 +9,12 @@
 	function startQues(quesId) {
 	    console.log(quesId);
 	    var xmlhttp;
-	    var xmlhttpTest;
 	    xmlhttp=new XMLHttpRequest();
-	    xmlhttpTest=new XMLHttpRequest();
 	    
 	    xmlhttp.open("GET","@{Console.startQues}?quesId="+quesId,true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);
-	    xmlhttpTest.open("GET","@{Console.getProblem}",true);
-	    xmlhttpTest.send();
-	    console.log(xmlhttpTest);
+
 	}
 	</script>
 </head>

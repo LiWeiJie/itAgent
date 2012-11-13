@@ -20,6 +20,7 @@ public class Console extends Controller {
 	private static int loadingQue = 0;
 	
 	private static String[] teamIds = {"T1","T2","T3"};
+	private static String[] teamRanking ;
 	
 	public static void startQues(int quesId)
 	{
@@ -30,10 +31,12 @@ public class Console extends Controller {
 	
 	public static void index() throws SQLException {
 		int str =problemTBService.getProblemsCount();
+		render();
         renderText(str);
     }
 	
 	public static void getProblem() throws SQLException {
+		if (loadingQue==0) renderText("Waiting~");
 		String str =problemTBService.getSingleProblemById(loadingQue);
         renderText(str);
     }
@@ -53,14 +56,22 @@ public class Console extends Controller {
 		renderText(str);
     }
 	
-	public static void getTimeRanking(int no) throws SQLException {
-		long[] score=new long[9];
-		for(int i=0;i<9;i++)
-		{
-			score[i] = scoreTBService.getTeamScore(teamIds[i]); 
-		}
-		
-    }
-	
+	public static void getTeamTime(int teamId) throws SQLException {
+		renderText (problemTBService.getTeamTime(loadingQue, teamIds[teamId]));
+    }	
+
+
+    public static void maoPao(int[] x) {  
+	  for (int i = 0; i < x.length; i++) {  
+	   for (int j = i + 1; j < x.length; j++) {  
+	    if (x[i] > x[j]) {
+	     int temp = x[i];
+	     x[i] = x[j]; 
+	     x[j] = temp;
+	    }  
+	   }  
+	  }
+	     
+	 } 
 
 }

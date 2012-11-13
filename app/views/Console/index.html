@@ -4,18 +4,39 @@
     <title>Console -- ITAgent</title>    
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   	<link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen">
+    <link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
   </head>
   <script>
-  $(function (){
+  function gettime(){
   	console.log("Welcome to console.");
-  })
+    var resultDiv=document.getElementById("resultBroad");
+    var currentDate = new Date();
+    resultDiv.innerHTML = currentDate; 
+    $("#resultBroad").attr("width","180");
+    $("#resultBroad").attr("length","180");
+    $("#resultBroad").attr("class","btn");
+  }
+
+  var intervalId = window.setInterval("new gettime()", 1000);
+  var test= new Array();
+
+  test[0]=3;
+  test[1]=2;
+  test[2]=1;
+  console.log(test);
+  test.sort();
+  console.log(test);
+
+
+
   </script>
 
 
    <body>
-        <div>
+        <div id = "Board">
         	Result Broad
-        	<p id='resultBroad'>
+        	<p id="resultBroad">
         	</p>
         </div>
     </body>

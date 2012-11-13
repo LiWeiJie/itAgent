@@ -11,6 +11,18 @@
 		}
 	</style>
 	<title>Insert title here</title>
+	
+	<script type="text/javascript">
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -76,42 +88,67 @@
 			<div class="span6">
 				<table class="table table-bordered">
 					<tr>
-						<td>T1:10</td>
-						<td bgcolor="yellow">T2:50</td>
-						<td>T3:30</td>
-						<td bgcolor="yellow">T4:50</td>
-						<td>T5:30</td>
+						<td id="T1Score">T1:10</td>
+						<td id="T2Score">T2:50</td>
+						<td id="T3Score">T3:30</td>
+						<td id="T4Score">T4:50</td>
+						<td id="T5Score">T5:30</td>
 						
 					</tr>
 					<tr>
-						<td>T6:2</td>
-						<td>T7:5</td>
-						<td>T8:6</td>
-						<td>T9:7</td>
+						<td id="T6Score">T6:2</td>
+						<td id="T7Score">T7:5</td>
+						<td id="T8Score">T8:6</td>
+						<td id="T9Score">T9:7</td>
 						<td>NULL</td>
 						
 					</tr>
 				</table>			
 			</div>
-		<div class="span3">
-			<table class="table">
-				<tr>
-					<td>
-						<div class="span1 offset4"><strong>4/10</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-				
-						<div class="progress progress-stripedactive">
-						  <div class="bar" style="width: 40%;"></div>
-						</div>
-				
-				</td>
-			</table>
-		</div>
+			<div class="span3">
+				<table class="table">
+					<tr>
+						<td>
+							<div class="span1 offset4"><strong>4/10</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+					
+							<div class="progress progress-stripedactive">
+							  <div class="bar" style="width: 40%;"></div>
+							</div>
+					
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
+
+	<script>
+		function gettime(){
+			console.log("Welcome to console.");
+		var resultDiv=document.getElementById("resultBroad");
+		var currentDate = new Date();
+		resultDiv.innerHTML = currentDate; 
+		$("#resultBroad").attr("width","180");
+		$("#resultBroad").attr("length","180");
+		$("#resultBroad").attr("class","btn");
+		}
+
+		var intervalId = window.setInterval("new gettime()", 1000);
+		var test= new Array();
+		test[0]=3;
+		test[1]=2;
+		test[2]=1;
+		console.log(test);
+		test.sort();
+		console.log(test);
+
+
+
+	</script>
 	
     
 	<script src="/public/js/bootstrap.js"></script>
