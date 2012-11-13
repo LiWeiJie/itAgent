@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/public/css/bootstrap.min.css" media="screen">
+	<script src="/public/jquery/js/jquery-1.8.2.js"></script>
 	<link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
+
 	<style type="text/css">
 		body {
 		  padding-top: 60px;
@@ -127,17 +129,50 @@
 	</div>
 
 	<script>
-		function gettime(){
+		function getScore(){
 			console.log("Welcome to console.");
-		var resultDiv=document.getElementById("resultBroad");
-		var currentDate = new Date();
-		resultDiv.innerHTML = currentDate; 
-		$("#resultBroad").attr("width","180");
-		$("#resultBroad").attr("length","180");
-		$("#resultBroad").attr("class","btn");
+			var maxer = 0;
+			var scores = new Array();
+		    for(var i=1;i<=9;i++)
+		    {
+		    	var xmlhttp;
+			    xmlhttp=new XMLHttpRequest();
+
+			    xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						scores[i] = xmlhttp.responseText;
+						document.getElementById("T"+i+"Score").innerHTML=scores[i];
+					}
+				}
+				
+				
+			    xmlhttp.open("GET","@{Console.getTeamScore}?teamId="+i,true);
+			    xmlhttp.send();
+			    console.log(xmlhttp);
+		    }
+		    console.log(scores);
+			for(var i=1;i<=9;i++)
+			{
+				if (maxer<scores[i])
+				{
+					maxer = scores[i];
+				}
+			}
+			for(var i=1;i<=9;i++)
+			{
+				if (maxer==scores[i])
+				{
+					var targetId = "T"+i+"Score";
+					$('#'+targetId).attr("bgcolor","red");
+				}
+			}
+			
 		}
 
-		var intervalId = window.setInterval("new gettime()", 1000);
+		
+		new getScore();
 		var test= new Array();
 		test[0]=3;
 		test[1]=2;

@@ -19,7 +19,7 @@ public class Console extends Controller {
 	
 	private static int loadingQue = 0;
 	
-	private static String[] teamIds = {"T1","T2","T3"};
+	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9"};
 	private static String[] teamRanking ;
 	
 	public static void startQues(int quesId)
@@ -71,7 +71,7 @@ public class Console extends Controller {
 	    }  
 	   }  
 	  }
-	     
+
 	 } 
 
 }

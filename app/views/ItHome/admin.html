@@ -8,12 +8,17 @@
 	<script language="JavaScript">
 	function startQues(quesId) {
 	    console.log(quesId);
-	    var xmlhttp;
-	    xmlhttp=new XMLHttpRequest();
+	    for(var i=1;i<=9;i++)
+	    {
+	    	var xmlhttp;
+
+		    xmlhttp=new XMLHttpRequest();
+		    
+		    xmlhttp.open("GET","@{Console.startQues}?quesId="+i,true);
+		    xmlhttp.send();
+		    console.log(xmlhttp);	
+	    }
 	    
-	    xmlhttp.open("GET","@{Console.startQues}?quesId="+quesId,true);
-	    xmlhttp.send();
-	    console.log(xmlhttp);
 
 	}
 	</script>
