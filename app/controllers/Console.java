@@ -52,12 +52,12 @@ public class Console extends Controller {
     }
 	
 	public static void getTeamScore(int teamId) throws SQLException {
-		long str = scoreTBService.getTeamScore(teamIds[teamId]);
+		String str = teamId+"-"+scoreTBService.getTeamScore(teamIds[teamId]);
 		renderText(str);
     }
 	
 	public static void getTeamTime(int teamId) throws SQLException {
-		renderText (problemTBService.getTeamTime(loadingQue, teamIds[teamId]));
+		renderText (teamId+"-"+problemTBService.getTeamTime(loadingQue, teamIds[teamId]));
     }	
 
 

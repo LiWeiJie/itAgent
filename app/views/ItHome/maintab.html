@@ -129,37 +129,45 @@
 	</div>
 
 	<script>
-		function getScore(){
-			console.log("Welcome to console.");
-			var maxer = 0;
-			var scores = new Array();
+		var scores = new Array();
+		function getScore(){		
+			
+			var xmlhttp =new Array();
 		    for(var i=1;i<=9;i++)
 		    {
-		    	var xmlhttp;
-			    xmlhttp=new XMLHttpRequest();
+		    	
+			    xmlhttp[i]=new XMLHttpRequest();
 
-			    xmlhttp.onreadystatechange=function()
+			    xmlhttp[i].onreadystatechange=function()
 				{
-					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+					if (this.readyState==4 && this.status==200)
 					{
-						scores[i] = xmlhttp.responseText;
-						document.getElementById("T"+i+"Score").innerHTML=scores[i];
+						
+						var str =  this.responseText.split("-");
+						scores[str[0]] = parseInt(str[1]);
+						
+					 	document.getElementById("T"+str[0]+"Score").innerHTML=str[1];
 					}
-				}
-				
-				
-			    xmlhttp.open("GET","@{Console.getTeamScore}?teamId="+i,true);
-			    xmlhttp.send();
-			    console.log(xmlhttp);
-		    }
-		    console.log(scores);
+				}				
+			    xmlhttp[i].open("GET","@{Console.getTeamScore}?teamId="+i,true);
+			    xmlhttp[i].send();
+		    }			
+		}
+		function setMaxScore(){
+			var maxer = 0;
+			console.log(scores);
 			for(var i=1;i<=9;i++)
 			{
+				
 				if (maxer<scores[i])
 				{
-					maxer = scores[i];
+					console.log(scores[i]);
+					maxer=scores[i];
 				}
 			}
+
+			if (maxer!=0)
 			for(var i=1;i<=9;i++)
 			{
 				if (maxer==scores[i])
@@ -167,10 +175,16 @@
 					var targetId = "T"+i+"Score";
 					$('#'+targetId).attr("bgcolor","red");
 				}
+				else 
+				{
+					var targetId = "T"+i+"Score";
+					$('#'+targetId).removeAttr("bgcolor");	
+				}
 			}
-			
-		}
 
+		}
+		var intTeamScoreId = window.setInterval("new getScore()", 1000);
+		var intMaxScoreId = window.setInterval("new setMaxScore()", 100);
 		
 		new getScore();
 		var test= new Array();
