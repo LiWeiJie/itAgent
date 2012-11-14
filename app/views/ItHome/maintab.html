@@ -56,7 +56,7 @@
 			<div class="span7">
 				<h1>题目：</h1>
 				<br>
-				<h3>1．word文字处理部分，切换到文字处理，完成以下操作。 
+				<h3 id="mainText">1．word文字处理部分，切换到文字处理，完成以下操作。 
 					•(1) 为全文添加标题，标题文字为“IT特工向前冲六项技能竞赛”（不包括引号），并设置为黑体，一号，加粗，具有“赤水情深”的动态效果，标题文字“居中”对齐；
 					•(2) 除标题外的正文进行“分栏”，栏数为2,具有分隔线，间距为一个字符；
 					•(3) 给标题添加尾注“计软学院学风建设系列活动之一”， 编号标记为“①”。 
@@ -66,17 +66,17 @@
 			<div class="span2">
 				<h1>状态：</h1>
 				<br><br>
-				<div class="span3"><button class="btn btn-block">T1</button></div>
-				<div class="span3"><button class="btn btn-block btn-danger">T2</button></div>
-				<div class="span3"><button class="btn btn-block">T3</button></div>
+				<div class="span3"><button class="btn btn-block" id="T1Time">T1</button></div>
+				<div class="span3"><button class="btn btn-block btn-danger" id="T2Time">T2</button></div>
+				<div class="span3"><button class="btn btn-block" id="T3Time">T3</button></div>
 				<br>
-				<div class="span3"><button class="btn btn-block btn-success">T4</button></div>
-				<div class="span3"><button class="btn btn-block">T5</button></div>
-				<div class="span3"><button class="btn btn-block">T6</button></div>
+				<div class="span3"><button class="btn btn-block btn-success" id="T4Time">T4</button></div>
+				<div class="span3"><button class="btn btn-block" id="T5Time">T5</button></div>
+				<div class="span3"><button class="btn btn-block" id="T6Time">T6</button></div>
 				<br>
-				<div class="span3"><button class="btn btn-block">T7</button></div>
-				<div class="span3"><button class="btn btn-block">T8</button></div>
-				<div class="span3"><button class="btn btn-block">T9</button></div>
+				<div class="span3"><button class="btn btn-block" id="T7Time">T7</button></div>
+				<div class="span3"><button class="btn btn-block" id="T8Time">T8</button></div>
+				<div class="span3"><button class="btn btn-block" id="T9Time">T9</button></div>
 				<br><br><br><br><br>
 				
 				<div class="span9"><button class="btn btn-large btn-danger btn-block"type="button"><h1>抢！ </h1></button></div>
@@ -118,7 +118,7 @@
 						<td>
 					
 							<div class="progress progress-stripedactive">
-							  <div class="bar" style="width: 40%;"></div>
+					    		<div class="bar" style="width: 40%;"></div>
 							</div>
 					
 						</td>
@@ -156,13 +156,11 @@
 		}
 		function setMaxScore(){
 			var maxer = 0;
-			console.log(scores);
 			for(var i=1;i<=9;i++)
 			{
 				
 				if (maxer<scores[i])
 				{
-					console.log(scores[i]);
 					maxer=scores[i];
 				}
 			}
@@ -181,10 +179,68 @@
 					$('#'+targetId).removeAttr("bgcolor");	
 				}
 			}
+		}
+		function getMainText(){
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200)
+				{	
+				 	document.getElementById("mainText").innerHTML=this.responseText;
+				}
+			}				
+		    xmlhttp.open("GET","@{Console.getProblem}",true);
+		    xmlhttp.send();
+		}
+		var times = new Array();
+		function setQuickerTeam(){
+			var xmlhttp =new Array();
+		    for(var i=1;i<=9;i++)
+		    {
+		    	
+			    xmlhttp[i]=new XMLHttpRequest();
 
+			    xmlhttp[i].onreadystatechange=function()
+				{
+					if (this.readyState==4 && this.status==200)
+					{
+						var str =  this.responseText.split("-");
+						times[str[0]] = parseInt(str[1]);					
+					}
+				}				
+			    xmlhttp[i].open("GET","@{Console.getTeamTime}?teamId="+i,true);
+			    xmlhttp[i].send();
+		    }
+		    var maxer = -999;
+			for(var i=1;i<=9;i++)
+			{
+				console.log(times[i]);
+				if (maxer<times[i])
+				{
+					maxer=times[i];
+				}
+			}
+
+			if (maxer!=-999)
+			for(var i=1;i<=9;i++)
+			{
+				if (maxer==times[i])
+				{
+					var targetId = "T"+i+"Time";
+					$('#'+targetId).attr("class","btn btn-block btn-danger");
+				}
+				else 
+				{
+					var targetId = "T"+i+"Time";
+					$('#'+targetId).removeAttr("class");	
+					$('#'+targetId).attr("class","btn btn-block");
+				}
+			}
 		}
 		var intTeamScoreId = window.setInterval("new getScore()", 1000);
 		var intMaxScoreId = window.setInterval("new setMaxScore()", 100);
+		var intMaxScoreId = window.setInterval("new getMainText()", 100);
+		var intMaxScoreId = window.setInterval("new setQuickerTeam()", 100);
 		
 		new getScore();
 		var test= new Array();

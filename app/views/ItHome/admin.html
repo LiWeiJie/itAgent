@@ -10,7 +10,7 @@
 	    console.log(quesId);
     	var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
-	    xmlhttp.open("GET","@{Console.startQues}?quesId="+i,true);
+	    xmlhttp.open("GET","@{Console.startQues}?quesId="+quesId,true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);	    
 	}
@@ -19,6 +19,7 @@
 <body>
 	<div class="container" id="mainBody">
 		<div class="hero-unit">
+			<button   class="btn" onclick="startQues(0)" }>Waiting</button>
 			<button   class="btn" onclick="startQues(1)" }>Ques1</button>
 			<button   class="btn" onclick="startQues(2)" }>Ques2</button>
 			<button   class="btn" onclick="startQues(3)" }>Ques3</button>
@@ -29,8 +30,6 @@
 			<button   class="btn" onclick="startQues(8)" }>Ques8</button>
 			<button   class="btn" onclick="startQues(9)" }>Ques9</button>
 			<button   class="btn" onclick="startQues(10)" }>Ques10</button>
-			
-			
 		</div>
 	</div>
 	<

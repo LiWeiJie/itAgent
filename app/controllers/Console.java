@@ -30,9 +30,23 @@ public class Console extends Controller {
 	}
 	
 	public static void index() throws SQLException {
-		int str =problemTBService.getProblemsCount();
 		render();
+    }
+
+    public static void getProblemsCount() throws SQLException {
+		int str =problemTBService.getProblemsCount();
         renderText(str);
+    }
+
+    public static void getCurrentProblem() throws SQLException {
+        renderText(loadingQue);
+    }
+
+    public static void getPercentage() throws SQLException {
+    	int problemCount =problemTBService.getProblemsCount();
+    	int percentage = loadingQue/problemCount*100;
+    	String str = percentage+"%";
+	    renderText(str);
     }
 	
 	public static void getProblem() throws SQLException {
@@ -41,8 +55,8 @@ public class Console extends Controller {
         renderText(str);
     }
 	
-	public static void setTeamAnswerTime(int problemId,int teamId) throws SQLException {
-		String str =problemTBService.setTeamTime(problemId, teamIds[teamId], System.currentTimeMillis());
+	public static void setTeamAnswerTime(int teamId) throws SQLException {
+		String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis());
         renderText(str);
     }
 	
@@ -57,8 +71,10 @@ public class Console extends Controller {
     }
 	
 	public static void getTeamTime(int teamId) throws SQLException {
-		renderText (teamId+"-"+problemTBService.getTeamTime(loadingQue, teamIds[teamId]));
+		String str = teamId+"-"+problemTBService.getTeamTime(loadingQue, teamIds[teamId]);
+		renderText(str);
     }	
+
 
 
     public static void maoPao(int[] x) {  
@@ -66,7 +82,7 @@ public class Console extends Controller {
 	   for (int j = i + 1; j < x.length; j++) {  
 	    if (x[i] > x[j]) {
 	     int temp = x[i];
-	     x[i] = x[j]; 
+	     x[i] = x[j];
 	     x[j] = temp;
 	    }  
 	   }  
