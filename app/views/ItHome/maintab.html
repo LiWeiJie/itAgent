@@ -14,19 +14,13 @@
 	</style>
 	<title>Insert title here</title>
 	
-	<script type="text/javascript">
-	
-	</script>
-	
-	
-	
 	
 	
 	
 	
 	
 </head>
-<body>
+<body onload="setTeamlogin()">
 	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -38,13 +32,9 @@
           <a class="brand" href="#">IT特工向前冲</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="">Home</a></li>
+              <li class="active"><a href="main">Problem</a></li>
             </ul>
-            <form class="navbar-form pull-right" id="login"  method="POST" >
-              <input class="span2" type="password" placeholder="登陆密钥"  name="password" >
-              
-              <button class="btn btn-large btn-inverse" type="submit">Sign in</button>
-            </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -56,30 +46,29 @@
 			<div class="span7">
 				<h1>题目：</h1>
 				<br>
-				<h3 id="mainText">1．word文字处理部分，切换到文字处理，完成以下操作。 
-					•(1) 为全文添加标题，标题文字为“IT特工向前冲六项技能竞赛”（不包括引号），并设置为黑体，一号，加粗，具有“赤水情深”的动态效果，标题文字“居中”对齐；
-					•(2) 除标题外的正文进行“分栏”，栏数为2,具有分隔线，间距为一个字符；
-					•(3) 给标题添加尾注“计软学院学风建设系列活动之一”， 编号标记为“①”。 
-					•（4） 插入图片a，选择合适大小（参考高度为5厘米），版式为“四周型”；
-				</h3>
+				<h3 id="mainText"></h3>
 			</div>
 			<div class="span2">
 				<h1>状态：</h1>
 				<br><br>
 				<div class="span3"><button class="btn btn-block" id="T1Time">T1</button></div>
-				<div class="span3"><button class="btn btn-block btn-danger" id="T2Time">T2</button></div>
+				<div class="span3"><button class="btn btn-block" id="T2Time">T2</button></div>
 				<div class="span3"><button class="btn btn-block" id="T3Time">T3</button></div>
 				<br>
-				<div class="span3"><button class="btn btn-block btn-success" id="T4Time">T4</button></div>
+				<div class="span3"><button class="btn btn-block" id="T4Time">T4</button></div>
 				<div class="span3"><button class="btn btn-block" id="T5Time">T5</button></div>
 				<div class="span3"><button class="btn btn-block" id="T6Time">T6</button></div>
 				<br>
 				<div class="span3"><button class="btn btn-block" id="T7Time">T7</button></div>
 				<div class="span3"><button class="btn btn-block" id="T8Time">T8</button></div>
 				<div class="span3"><button class="btn btn-block" id="T9Time">T9</button></div>
+				<br>
+				<div class="span3"><button class="btn btn-block" id="T10Time">T10</button></div>
+				<div class="span3"><button class="btn btn-block" id="T11Time">T11</button></div>
+				<div class="span3"><button class="btn btn-block" id="T12Time">T12</button></div>
 				<br><br><br><br><br>
 				
-				<div class="span9"><button class="btn btn-large btn-danger btn-block"type="button"><h1>抢！ </h1></button></div>
+				<div class="span9"><button class="btn btn-large btn-danger btn-block"type="button" onclick="sendGetProblem()"><h1>抢！ </h1></button></div>
 			</div>
 		</div>
 	</div>
@@ -87,7 +76,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span1"></div>
-			<div class="span6">
+			<div class="span7">
 				<table class="table table-bordered">
 					<tr>
 						<td id="T1Score">T1:10</td>
@@ -95,19 +84,21 @@
 						<td id="T3Score">T3:30</td>
 						<td id="T4Score">T4:50</td>
 						<td id="T5Score">T5:30</td>
-						
+						<td id="T6Score">T6:2</td>
 					</tr>
 					<tr>
-						<td id="T6Score">T6:2</td>
+						
 						<td id="T7Score">T7:5</td>
 						<td id="T8Score">T8:6</td>
 						<td id="T9Score">T9:7</td>
-						<td>NULL</td>
+						<td id="T10Score">T10:7</td>
+						<td id="T11Score">T11:7</td>
+						<td id="T12Score">T12:7</td>
 						
 					</tr>
 				</table>			
 			</div>
-			<div class="span3">
+			<div class="span2">
 				<table class="table">
 					<tr>
 						<td>
@@ -211,21 +202,23 @@
 			    xmlhttp[i].open("GET","@{Console.getTeamTime}?teamId="+i,true);
 			    xmlhttp[i].send();
 		    }
-		    var maxer = -999;
+		    var maxer = 0;
 			for(var i=1;i<=9;i++)
 			{
-				console.log(times[i]);
-				if (maxer<times[i])
+
+				if (maxer==0&&times[i]!=0) maxer=times[i];
+				if (maxer>times[i]&&times[i]!=0)
 				{
 					maxer=times[i];
 				}
 			}
 
-			if (maxer!=-999)
+			
 			for(var i=1;i<=9;i++)
 			{
-				if (maxer==times[i])
+				if (maxer==times[i]&&maxer!=0)
 				{
+					console.log(times[i]);
 					var targetId = "T"+i+"Time";
 					$('#'+targetId).attr("class","btn btn-block btn-danger");
 				}
@@ -237,10 +230,56 @@
 				}
 			}
 		}
-		var intTeamScoreId = window.setInterval("new getScore()", 1000);
-		var intMaxScoreId = window.setInterval("new setMaxScore()", 100);
-		var intMaxScoreId = window.setInterval("new getMainText()", 100);
-		var intMaxScoreId = window.setInterval("new setQuickerTeam()", 100);
+
+		function getCookie(c_name)
+		{
+		if (document.cookie.length>0)
+		  {
+		  c_start=document.cookie.indexOf(c_name + "=")
+		  if (c_start!=-1)
+		    { 
+		    c_start=c_start + c_name.length+1 
+		    c_end=document.cookie.indexOf(";",c_start)
+		    if (c_end==-1) c_end=document.cookie.length
+		    return unescape(document.cookie.substring(c_start,c_end))
+		    } 
+		  }
+		return ""
+		}
+
+		function setCookie(c_name,value,expiredays)
+		{
+			var exdate=new Date()
+			exdate.setDate(exdate.getDate()+expiredays)
+			document.cookie=c_name+ "=" +escape(value)+
+			((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+		}
+
+		function setTeamlogin(password)
+		{
+			teamId=getCookie("teamId")
+			if (teamId!=null && teamId!="")
+			  {alert('Welcome again '+teamId+'!')}
+			else 
+			  {
+			  teamId=prompt('Please enter your teamKey:',"")
+			  if (teamId!=null && teamId!="")
+			    {
+			    setCookie("teamId",teamId,365)
+			    }
+			  }
+		}
+
+		function sendGetProblem(){
+			var xmlhttp=new XMLHttpRequest();
+			teamId=getCookie("teamId")
+		    xmlhttp.open("GET","@{Console.setTeamAnswerTime}?teamId="+teamId,true);
+		    xmlhttp.send();
+		}
+		var teamScoreId = window.setInterval("new getScore()", 1000);
+		var maxScoreId = window.setInterval("new setMaxScore()", 100);
+		var mainTextId = window.setInterval("new getMainText()", 100);
+		var quickerTeamId = window.setInterval("new setQuickerTeam()", 100);
 		
 		new getScore();
 		var test= new Array();

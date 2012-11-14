@@ -18,6 +18,7 @@ public class Console extends Controller {
 	static IScoreTBService scoreTBService;
 	
 	private static int loadingQue = 0;
+	private static long startTime = 0;
 	
 	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9"};
 	private static String[] teamRanking ;
@@ -26,6 +27,7 @@ public class Console extends Controller {
 	{
 		System.out.print(quesId);
 		loadingQue = quesId;
+		startTime = System.currentTimeMillis();
 		renderText(quesId);
 	}
 	
@@ -56,7 +58,8 @@ public class Console extends Controller {
     }
 	
 	public static void setTeamAnswerTime(int teamId) throws SQLException {
-		String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis());
+		System.out.println(System.currentTimeMillis()-startTime);
+		String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()-startTime);
         renderText(str);
     }
 	
