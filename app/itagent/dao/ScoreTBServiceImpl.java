@@ -52,4 +52,27 @@ public class ScoreTBServiceImpl implements IScoreTBService {
 		return teamScore;
 	}
 
+	@Override
+	public String getTeamName(String teamId) {
+		// TODO Auto-generated method stub
+		String teamName = "";
+		Connection conn = play.db.DB.getConnection();
+		String sql = "SELECT * FROM " + SCORE_TB_NAME + " WHERE TEAM_ID='"
+				+ teamId + "';";
+		System.out.println(sql);
+		try {
+			ResultSet rs = conn.prepareStatement(sql).executeQuery();
+			rs.beforeFirst();
+			while (rs.next()) {
+				teamName = rs.getString("TEAM_NAME");
+				break;
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return teamName;
+	}
+
 }

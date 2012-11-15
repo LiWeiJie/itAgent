@@ -76,8 +76,12 @@ public class Console extends Controller {
 	public static void getTeamTime(int teamId) throws SQLException {
 		String str = teamId+"-"+problemTBService.getTeamTime(loadingQue, teamIds[teamId]);
 		renderText(str);
-    }	
+    }
 
+    public static void getTeamName(int teamId) throws SQLException {
+		String str = scoreTBService.getTeamName(teamIds[teamId]);
+		renderText(str);
+    }
 
 
     public static void maoPao(int[] x) {  
