@@ -96,9 +96,14 @@ public class Console extends Controller {
 
     public static void resetAllQues() throws SQLException {
     	int problemCount =problemTBService.getProblemsCount();
+    	System.out.println(problemCount);
+    	Long t = new Long(0);
     	for(int i=0;i<=problemCount;i++)
     	{
-    		resetQues(i);
+	    	for (int j=1;j<=teamsCount;j++)
+			{
+				problemTBService.setTeamTime(i, teamIds[j], t);
+			}
     	}
     }
 
