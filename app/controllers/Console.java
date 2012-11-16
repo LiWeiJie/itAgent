@@ -19,8 +19,9 @@ public class Console extends Controller {
 	
 	private static int loadingQue = 0;
 	private static long startTime = 0;
+	private static int teamsCount = 12;
 	
-	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9"};
+	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13"};
 	private static String[] teamRanking ;
 	
 	public static void startQues(int quesId)
@@ -81,6 +82,24 @@ public class Console extends Controller {
     public static void getTeamName(int teamId) throws SQLException {
 		String str = scoreTBService.getTeamName(teamIds[teamId]);
 		renderText(str);
+    }
+
+    public static void resetQues(int quesId) throws SQLException {
+    	
+    	Long t = new Long(0);
+    	for (int i=1;i<=teamsCount;i++)
+    	{
+    		problemTBService.setTeamTime(quesId, teamIds[i], t);
+    		System.out.println(quesId+"+"+i);
+    	}
+    }
+
+    public static void resetAllQues() throws SQLException {
+    	int problemCount =problemTBService.getProblemsCount();
+    	for(int i=0;i<=problemCount;i++)
+    	{
+    		resetQues(i);
+    	}
     }
 
 

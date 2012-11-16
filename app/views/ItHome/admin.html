@@ -7,18 +7,35 @@
 	<link href="/public/css/bootstrap-responsive.css" rel="stylesheet">
 	<script language="JavaScript">
 	function startQues(quesId) {
-	    console.log(quesId);
     	var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
 	    xmlhttp.open("GET","@{Console.startQues}?quesId="+quesId,true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);	    
 	}
+	function resetQues(quesId) {
+		var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("GET","@{Console.resetQues}?quesId="+quesId,true);
+	    xmlhttp.send();
+	    console.log(xmlhttp);	 
+	}
+	function resetAllQues() {
+		var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("GET","@{Console.resetAllQues}",true);
+	    xmlhttp.send();
+	    console.log(xmlhttp);	 
+	}
+
+
 	</script>
+
 </head>
 <body>
 	<div class="container" id="mainBody">
 		<div class="hero-unit">
+			启动题目
 			<button   class="btn" onclick="startQues(0)" }>Waiting</button>
 			<button   class="btn" onclick="startQues(1)" }>Ques1</button>
 			<button   class="btn" onclick="startQues(2)" }>Ques2</button>
@@ -31,6 +48,22 @@
 			<button   class="btn" onclick="startQues(9)" }>Ques9</button>
 			<button   class="btn" onclick="startQues(10)" }>Ques10</button>
 		</div>
+		<div class="hero-unit">
+			重置题目时间
+			<button   class="btn" onclick="resetAllQues()" }>All</button>
+			<button   class="btn" onclick="resetQues(1)" }>Ques1</button>
+			<button   class="btn" onclick="resetQues(2)" }>Ques2</button>
+			<button   class="btn" onclick="resetQues(3)" }>Ques3</button>
+			<button   class="btn" onclick="resetQues(4)" }>Ques4</button>
+			<button   class="btn" onclick="resetQues(5)" }>Ques5</button>
+			<button   class="btn" onclick="resetQues(6)" }>Ques6</button>
+			<button   class="btn" onclick="resetQues(7)" }>Ques7</button>
+			<button   class="btn" onclick="resetQues(8)" }>Ques8</button>
+			<button   class="btn" onclick="resetQues(9)" }>Ques9</button>
+			<button   class="btn" onclick="resetQues(10)" }>Ques10</button>
+		</div>
+
+
 	</div>
 	<
 </body>
