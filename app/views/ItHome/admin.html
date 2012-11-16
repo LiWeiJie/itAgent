@@ -11,34 +11,31 @@
 	    xmlhttp=new XMLHttpRequest();
 	    xmlhttp.open("GET","@{Console.startQues}?quesId="+quesId,true);
 	    xmlhttp.send();
-	    console.log(xmlhttp);	    
 	}
 	function resetQues(quesId) {
 		var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
 	    xmlhttp.open("GET","@{Console.resetQues}?quesId="+quesId,true);
 	    xmlhttp.send();
-	    console.log(xmlhttp);	 
 	}
 	function resetAllQues() {
 		var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
 	    xmlhttp.open("GET","@{Console.resetAllQues}",true);
 	    xmlhttp.send();
-	    console.log(xmlhttp);	 
 	}
-	function dominateScore(int teamId,int variation) {
+	function dominateScore(teamId,variation) {
 		var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
 	    //传递参数
-	    xmlhttp.open("GET","@{Console.dominateScore}?teamIdId="teamId+"",true);
+	    //xmlhttp.open("GET","@{Console.dominateScore}?teamIdId="teamId+"",true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);	 
 	}
-	function resetScore(int variation) {
+	function resetScore(variation) {
 		var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
-	    xmlhttp.open("GET","@{Console.resetScore}?variation="variation,true);
+	    xmlhttp.open("GET","@{Console.resetScore}?variation="+variation,true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);
 	}

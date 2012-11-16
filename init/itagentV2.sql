@@ -1,0 +1,12 @@
+INSERT INTO `score_tb` VALUES ('T1', 200, 'TEAM-ONE', 'JACK');
+INSERT INTO `score_tb` VALUES ('T10', 5, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T11', 20, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T12', 50, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T2', 50, 'TEAM-TWO', 'MIKE');
+INSERT INTO `score_tb` VALUES ('T3', 10, 'TEAM-THREE', 'ROSE');
+INSERT INTO `score_tb` VALUES ('T4', 15, 'team-4', NULL);
+INSERT INTO `score_tb` VALUES ('T5', 20, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T6', 40, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T7', 80, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T8', 90, NULL, NULL);
+INSERT INTO `score_tb` VALUES ('T9', 40, NULL, NULL);
