@@ -24,7 +24,7 @@ public class ProblemTBServiceImpl implements IProblemTBService {
 			rs.beforeFirst();
 			while (rs.next())
 				problemContent = rs.getString("Content");
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class ProblemTBServiceImpl implements IProblemTBService {
 		Logger.debug(sql);
 		try {
 			conn.prepareStatement(sql).execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class ProblemTBServiceImpl implements IProblemTBService {
 				teamTime = rs.getLong(teamId);
 				break;
 			}
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +89,7 @@ public class ProblemTBServiceImpl implements IProblemTBService {
 				totalProblemCount = rs.getInt("COUNT(*)");
 				break;
 			}
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

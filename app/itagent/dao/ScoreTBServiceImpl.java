@@ -20,7 +20,7 @@ public class ScoreTBServiceImpl implements IScoreTBService {
 		Logger.debug(sql);
 		try {
 			conn.prepareStatement(sql).execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class ScoreTBServiceImpl implements IScoreTBService {
 				teamScore = rs.getInt("TEAM_SCORE");
 				break;
 			}
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class ScoreTBServiceImpl implements IScoreTBService {
 				teamName = rs.getString("TEAM_NAME");
 				break;
 			}
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

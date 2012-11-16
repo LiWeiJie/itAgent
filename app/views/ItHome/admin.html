@@ -28,7 +28,7 @@
 		var xmlhttp;
 	    xmlhttp=new XMLHttpRequest();
 	    //传递参数
-	    //xmlhttp.open("GET","@{Console.dominateScore}?teamIdId="teamId+"",true);
+	    xmlhttp.open("GET","@{Console.dominateScore}?teamId="+teamId+"&variation="+variation,true);
 	    xmlhttp.send();
 	    console.log(xmlhttp);	 
 	}
@@ -159,10 +159,10 @@
 				</tr>
 				<tr>
 					<td>
-						<button   class="btn" onclick="dominateScore(1,5)" }>-</button>
+						<button   class="btn" onclick="dominateScore(1,-5)" }>-</button>
 					</td>
 					<td>
-						<button   class="btn" onclick="dominateScore(2,5)" }>-</button>
+						<button   class="btn" onclick="dominateScore(2,-5)" }>-</button>
 					</td>
 					<td>
 						<button   class="btn" onclick="dominateScore(3,5)" }>-</button>
