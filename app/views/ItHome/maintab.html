@@ -35,6 +35,13 @@
 				<li class="active"><a href="/ItHome/index">Home</a></li>
 				<li class="active"><a href="/ItHome/maintab">Problems</a></li>
             </ul>
+            <div class="span2 navbar-form pull-right"  >	
+            	<button class="btn btn-large btn-inverse" onclick="signout()">注销</button>
+            </div>
+			<div class="span3 navbar-form pull-right"  >	
+            	<h3 id = "teamName">Welcome back! </h3>
+            </div>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -107,11 +114,9 @@
 					</tr>
 					<tr>
 						<td>
-					
 							<div class="progress progress-stripedactive">
 					    		<div class="bar" style="width: 40%;"></div>
 							</div>
-					
 						</td>
 					</tr>
 				</table>
@@ -253,19 +258,28 @@
 			exdate.setDate(exdate.getDate()+expiredays)
 			document.cookie=c_name+ "=" +escape(value)+
 			((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+			getTeamName();
+
 		}
 
 		function setTeamlogin(password)
 		{
 			teamId=getCookie("teamId")
 			if (teamId!=null && teamId!="")
-			  {alert('Welcome again '+teamId+'!')}
+			  {getTeamName();}
 			else 
 			  {
-			  teamId=prompt('Please enter your teamKey:',"")
+			  teamId=prompt('输入队伍号:',"")
 			  if (teamId!=null && teamId!="")
 			    {
-			    setCookie("teamId",teamId,365)
+			    	if (teamId>=3650&&teamId<=3662)
+			    		setCookie("teamId",teamId-3649,365);
+			    	else 
+			    	{
+			    		alert('号码错误，请重新输入!');
+			    		location.reload();
+			    	}
+			    		
 			    }
 			  }
 		}
@@ -284,27 +298,29 @@
 				if (this.readyState==4 && this.status==200)
 				{	
 
-				 	document.getElementById("mainText").innerHTML=this.responseText;
+				 	document.getElementById("teamName").innerHTML=this.responseText;
 				}
 			}
 			teamId=getCookie("teamId")		
 		    xmlhttp.open("GET","@{Console.getTeamName}?teamId="+teamId,true);
 		    xmlhttp.send();
 		}
+
+		function signout()
+		{
+			teamId=getCookie("teamId");
+			if (teamId!=null && teamId!="")
+			{
+				//注销
+				setCookie("teamId","",365);
+			}
+			//刷新页面
+			location.reload();
+		}
 		var teamScoreId = window.setInterval("new getScore()", 1000);
 		var maxScoreId = window.setInterval("new setMaxScore()", 100);
 		var quickerTeamId = window.setInterval("new setQuickerTeam()", 100);
 		var mainTextId = window.setInterval("new getMainText()", 100);
-		var teamNameId = window.setInterval("new getTeamName()", 10000);
-
-		new getScore();
-		var test= new Array();
-		test[0]=3;
-		test[1]=2;
-		test[2]=1;
-		console.log(test);
-		test.sort();
-		console.log(test);
 
 
 
