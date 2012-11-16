@@ -27,7 +27,21 @@
 	    xmlhttp.send();
 	    console.log(xmlhttp);	 
 	}
-
+	function dominateScore(int teamId,int variation) {
+		var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+	    //传递参数
+	    xmlhttp.open("GET","@{Console.dominateScore}?teamIdId="teamId+"",true);
+	    xmlhttp.send();
+	    console.log(xmlhttp);	 
+	}
+	function resetScore(int variation) {
+		var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("GET","@{Console.resetScore}?variation="variation,true);
+	    xmlhttp.send();
+	    console.log(xmlhttp);
+	}
 
 	</script>
 
@@ -49,8 +63,7 @@
 			<button   class="btn" onclick="startQues(10)" }>Ques10</button>
 		</div>
 		<div class="hero-unit">
-			重置题目时间
-			<button   class="btn" onclick="resetAllQues()" }>All</button>
+			重置题目时间			<button   class="btn" onclick="resetAllQues()" }>All</button>
 			<button   class="btn" onclick="resetQues(1)" }>Ques1</button>
 			<button   class="btn" onclick="resetQues(2)" }>Ques2</button>
 			<button   class="btn" onclick="resetQues(3)" }>Ques3</button>
@@ -62,9 +75,140 @@
 			<button   class="btn" onclick="resetQues(9)" }>Ques9</button>
 			<button   class="btn" onclick="resetQues(10)" }>Ques10</button>
 		</div>
+		<div class="hero-unit">
+			分数增减<button   class="btn" onclick="resetScore(200)" }>全部初始化</button>
+			<table>
+				<tr>
+					<td>
+						<button   class="btn" onclick="dominateScore(1,5)" }>T1</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(2,5)" }>T2</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(3,5)" }>T3</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(4,5)" }>T4</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(5,5)" }>T5</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(6,5)" }>T6</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(7,5)" }>T7</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(8,5)" }>T8</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(9,5)" }>T9</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(10,5)" }>T10</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(11,5)" }>T11</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(12,5)" }>T12</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(13,5)" }>T13</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button   class="btn" onclick="dominateScore(1,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(2,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(3,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(4,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(5,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(6,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(7,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(8,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(9,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(10,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(11,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(12,5)" }>+</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(13,5)" }>+</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button   class="btn" onclick="dominateScore(1,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(2,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(3,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(4,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(5,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(6,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(7,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(8,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(9,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(10,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(11,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(12,5)" }>-</button>
+					</td>
+					<td>
+						<button   class="btn" onclick="dominateScore(13,5)" }>-</button>
+					</td>
+				</tr>
 
+				
+
+			</table>
+			
+		</div>
 
 	</div>
-	<
+	
 </body>
 </html>

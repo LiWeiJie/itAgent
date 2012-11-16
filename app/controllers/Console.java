@@ -102,6 +102,19 @@ public class Console extends Controller {
     	}
     }
 
+    public static void dominateScore(int teamId,int variation) throws SQLException {
+    	int teamScore = scoreTBService.getTeamScore(teamIds[teamId]);
+		String str = scoreTBService.setTeamScore(teamIds[teamId],teamScore+variation);
+		renderText(str);
+    }
+
+    public static void resetScore(int variation) throws SQLException {
+    	for (int i=1;i<=teamsCount;i++)
+    	{
+    		String str = scoreTBService.setTeamScore(teamIds[i],variation);
+    	}
+    }
+
 
     public static void maoPao(int[] x) {  
 	  for (int i = 0; i < x.length; i++) {  
