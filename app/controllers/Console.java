@@ -74,10 +74,15 @@ public class Console extends Controller {
     }
 	
 	public static void setTeamAnswerTime(int teamId) throws SQLException {
+		System.out.println(teamId);
 		System.out.println(System.currentTimeMillis()-startTime);
 		Long t = problemTBService.getTeamTime(loadingQue, teamIds[teamId]);
-		if (t==0)
+		Long zero = new Long(0);
+		System.out.println(t);
+		if (t.equals(zero))
 		{
+			System.out.println(t);
+			System.out.println(teamIds[teamId]);
 			String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()-startTime);
 			renderText(str);
 		}
@@ -106,6 +111,7 @@ public class Console extends Controller {
     public static void resetQues(int quesId) throws SQLException {
     	
     	Long t = new Long(0);
+    	quesId = quesId*2-1;
     	for (int i=1;i<=teamsCount;i++)
     	{
     		problemTBService.setTeamTime(quesId, teamIds[i], t);
