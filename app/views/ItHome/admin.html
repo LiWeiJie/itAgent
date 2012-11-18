@@ -39,6 +39,12 @@
 	    xmlhttp.send();
 	    console.log(xmlhttp);
 	}
+	function showAnswer() {
+		var xmlhttp;
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("GET","@{Console.showAns}",true);
+	    xmlhttp.send();
+	}
 
 	</script>
 
@@ -48,6 +54,7 @@
 		<div class="hero-unit">
 			启动题目
 			<button   class="btn" onclick="startQues(0)" }>Waiting</button>
+			<button   class="btn" onclick="showAnswer()" }>展示答案</button>
 			<button   class="btn" onclick="startQues(1)" }>Ques1</button>
 			<button   class="btn" onclick="startQues(2)" }>Ques2</button>
 			<button   class="btn" onclick="startQues(3)" }>Ques3</button>

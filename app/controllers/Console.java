@@ -23,21 +23,31 @@ public class Console extends Controller {
 	
 	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13"};
 	private static String[] teamRanking ;
+	private static int showAnswer = 0 ;
+
 	
 	public static void startQues(int quesId)
 	{
 		System.out.print(quesId);
-		loadingQue = quesId;
+		if(quesId==0) loadingQue=0;
+		else loadingQue = quesId*2-1;
 		startTime = System.currentTimeMillis();
+		showAnswer = 0;
 		renderText(quesId);
 	}
+
+	public static void showAns()
+	{
+		showAnswer = 1;
+	}
+
 	
 	public static void index() throws SQLException {
 		render();
     }
 
     public static void getProblemsCount() throws SQLException {
-		int str =problemTBService.getProblemsCount();
+		int str =problemTBService.getProblemsCount()/2;
         renderText(str);
     }
 
@@ -46,15 +56,20 @@ public class Console extends Controller {
     }
 
     public static void getPercentage() throws SQLException {
-    	int problemCount =problemTBService.getProblemsCount();
-    	int percentage = loadingQue*100/problemCount;
-    	String str = loadingQue+"/"+problemCount+"-"+percentage;
+    	int problemCount =problemTBService.getProblemsCount()/2;
+    	int trueQue = (loadingQue+1)/2;
+    	int percentage = trueQue*100/problemCount;
+    	String str = trueQue+"/"+problemCount+"-"+percentage;
 	    renderText(str);
     }
 	
 	public static void getProblem() throws SQLException {
 		if (loadingQue==0) renderText("Waiting~");
-		String str =problemTBService.getSingleProblemById(loadingQue);
+		String str;
+		if (showAnswer==0)
+			str =problemTBService.getSingleProblemById(loadingQue);
+		else 
+			str =problemTBService.getSingleProblemById(loadingQue+1);
         renderText(str);
     }
 	
