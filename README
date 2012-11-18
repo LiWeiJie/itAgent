@@ -1,4 +1,20 @@
-﻿一个小小的使用bootstrap和the play framework 搭建的 抢答网站。
+﻿itAgent
+Joint Author:
+黎伟杰(http://weibo.com/1775583867)
+梁博文(http://weibo.com/simonlbw)
+
+这是为华南师范大学计算机学院软件学院学生会的活动而开发的，
+该活动为2012年第二届“IT特工向前冲”六项技能大赛中的抢答环节。
+已于2012-11-18晚成功举办。
+
+涉及技术：
+后端采用Java Play！框架1.x，
+前端使用Twitter Bootstrap。
+
+开发周期：
+1周
+
+使用方法：
 首先请把init文件夹的最新版本导入sql数据库，库的名字请改为itagent
 然后使用play运行。
 端口为9000。
