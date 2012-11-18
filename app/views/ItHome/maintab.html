@@ -12,7 +12,7 @@
 		  padding-bottom: 40px;
 		}
 	</style>
-	<title>Insert title here</title>
+	<title>It特工向前冲</title>
 	
 	
 	
@@ -109,13 +109,13 @@
 				<table class="table">
 					<tr>
 						<td>
-							<div class="span1 offset4"><strong>4/10</div>
+							<div id="progressText" class="span1 offset4"><strong>0</div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div class="progress progress-stripedactive">
-					    		<div class="bar" style="width: 40%;"></div>
+					    		<div  id="progressBar" class="bar" style="width: 0%;"></div>
 							</div>
 						</td>
 					</tr>
@@ -143,7 +143,7 @@
 						var str =  this.responseText.split("-");
 						scores[str[0]] = parseInt(str[1]);
 						
-					 	document.getElementById("T"+str[0]+"Score").innerHTML=str[1];
+					 	document.getElementById("T"+str[0]+"Score").innerHTML="T"+str[0]+":"+str[1];
 					}
 				}				
 			    xmlhttp[i].open("GET","@{Console.getTeamScore}?teamId="+i,true);
@@ -179,15 +179,27 @@
 		}
 		function getMainText(){
 			var xmlhttp=new XMLHttpRequest();
+			var xmlhttp2=new XMLHttpRequest();
 			xmlhttp.onreadystatechange=function()
 			{
 				if (this.readyState==4 && this.status==200)
 				{	
 				 	document.getElementById("mainText").innerHTML=this.responseText;
 				}
-			}				
+			}
+			xmlhttp2.onreadystatechange=function()
+			{
+				if (this.readyState==4 && this.status==200)
+				{	
+					var str =  this.responseText.split("-");
+				 	document.getElementById("progressText").innerHTML=str[0];
+				 	$('#progressBar').attr("style","width: "+str[1]+"%;");
+				}
+			}
 		    xmlhttp.open("GET","@{Console.getProblem}",true);
 		    xmlhttp.send();
+		    xmlhttp2.open("GET","@{Console.getPercentage}",true);
+		    xmlhttp2.send();
 		}
 		var times = new Array();
 		function setQuickerTeam(){

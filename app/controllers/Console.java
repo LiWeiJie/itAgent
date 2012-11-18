@@ -47,8 +47,8 @@ public class Console extends Controller {
 
     public static void getPercentage() throws SQLException {
     	int problemCount =problemTBService.getProblemsCount();
-    	int percentage = loadingQue/problemCount*100;
-    	String str = percentage+"%";
+    	int percentage = loadingQue*100/problemCount;
+    	String str = loadingQue+"/"+problemCount+"-"+percentage;
 	    renderText(str);
     }
 	
