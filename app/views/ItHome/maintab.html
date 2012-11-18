@@ -285,13 +285,21 @@
 			  teamId=prompt('输入队伍号:',"")
 			  if (teamId!=null && teamId!="")
 			    {
-			    	if (teamId>=3651&&teamId<=3662)
-			    		setCookie("teamId",teamId-3650,365);
+			    	if (teamId==3683)
+			    	{
+			    		setCookie("teamId",0,365);
+			    	}
 			    	else 
 			    	{
-			    		alert('号码错误，请重新输入!');
-			    		location.reload();
+			    		if (teamId>=3651&&teamId<=3662)
+			    		setCookie("teamId",teamId-3650,365);
+				    	else 
+				    	{
+				    		alert('号码错误，请重新输入!');
+				    		location.reload();
+				    	}	
 			    	}
+			    	
 			    		
 			    }
 			  }

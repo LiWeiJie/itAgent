@@ -21,7 +21,7 @@ public class Console extends Controller {
 	private static long startTime = 0;
 	private static int teamsCount = 12;
 	
-	private static String[] teamIds = {"","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13"};
+	private static String[] teamIds = {"ADMIN","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13"};
 	private static String[] teamRanking ;
 	private static int showAnswer = 0 ;
 
