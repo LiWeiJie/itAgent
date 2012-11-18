@@ -28,7 +28,9 @@ public class ItHome extends Controller {
 		renderText(userName+password);
 	}
 	
-
+	public static void aboutMe() {
+		render();
+	}
 	
 	
 	
