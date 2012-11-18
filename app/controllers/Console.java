@@ -64,7 +64,7 @@ public class Console extends Controller {
     }
 	
 	public static void getProblem() throws SQLException {
-		if (loadingQue==0) renderText("Waiting~");
+
 		String str;
 		if (showAnswer==0)
 			str =problemTBService.getSingleProblemById(loadingQue);
