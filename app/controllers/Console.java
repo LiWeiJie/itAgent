@@ -60,8 +60,12 @@ public class Console extends Controller {
 	
 	public static void setTeamAnswerTime(int teamId) throws SQLException {
 		System.out.println(System.currentTimeMillis()-startTime);
-		String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()-startTime);
-        renderText(str);
+		Long t = problemTBService.getTeamTime(loadingQue, teamIds[teamId]);
+		if (t==0)
+		{
+			String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()-startTime);
+			renderText(str);
+		}
     }
 	
 	public static void setTeamScore(int teamId,int plus) throws SQLException {
