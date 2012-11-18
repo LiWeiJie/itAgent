@@ -24,6 +24,7 @@ public class Console extends Controller {
 	private static String[] teamIds = {"ADMIN","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12","T13"};
 	private static String[] teamRanking ;
 	private static int showAnswer = 0 ;
+	private static int allowAn = 0 ;
 
 	
 	public static void startQues(int quesId)
@@ -31,9 +32,15 @@ public class Console extends Controller {
 		System.out.print(quesId);
 		if(quesId==0) loadingQue=0;
 		else loadingQue = quesId*2-1;
-		startTime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis()/10;
 		showAnswer = 0;
+		allowAn = 0;
 		renderText(quesId);
+	}
+
+	public static void showAns()
+	{
+		showAnswer = 1;
 	}
 
 	public static void showAns()
@@ -75,7 +82,7 @@ public class Console extends Controller {
 	
 	public static void setTeamAnswerTime(int teamId) throws SQLException {
 		System.out.println(teamId);
-		System.out.println(System.currentTimeMillis()-startTime);
+		System.out.println(System.currentTimeMillis()/10-startTime);
 		Long t = problemTBService.getTeamTime(loadingQue, teamIds[teamId]);
 		Long zero = new Long(0);
 		System.out.println(t);
@@ -83,7 +90,7 @@ public class Console extends Controller {
 		{
 			System.out.println(t);
 			System.out.println(teamIds[teamId]);
-			String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()-startTime);
+			String str =problemTBService.setTeamTime(loadingQue, teamIds[teamId], System.currentTimeMillis()/10-startTime);
 			renderText(str);
 		}
     }
