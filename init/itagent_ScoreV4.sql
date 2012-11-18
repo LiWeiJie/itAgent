@@ -1,0 +1,13 @@
+INSERT INTO `score_tb` VALUES ('ADMIN', 0, 'ADMIN', NULL);
+INSERT INTO `score_tb` VALUES ('T1', 195, 'T1:特工终结者', NULL);
+INSERT INTO `score_tb` VALUES ('T10', 225, 'T10:清晨之辉', NULL);
+INSERT INTO `score_tb` VALUES ('T11', 200, 'T11:佳洁士特工队', NULL);
+INSERT INTO `score_tb` VALUES ('T12', 220, 'T12:鹿野乱金队', NULL);
+INSERT INTO `score_tb` VALUES ('T2', 225, 'T2:IT小工', NULL);
+INSERT INTO `score_tb` VALUES ('T3', 250, 'T3:Fly with me', NULL);
+INSERT INTO `score_tb` VALUES ('T4', 230, 'T4:laughing', NULL);
+INSERT INTO `score_tb` VALUES ('T5', 180, 'T5:12级5班', NULL);
+INSERT INTO `score_tb` VALUES ('T6', 220, 'T6:12级6班', NULL);
+INSERT INTO `score_tb` VALUES ('T7', 245, 'T7:IT007', NULL);
+INSERT INTO `score_tb` VALUES ('T8', 210, 'T8:iBers', NULL);
+INSERT INTO `score_tb` VALUES ('T9', 235, 'T9:凌雪风暴', NULL);
