@@ -167,12 +167,13 @@
 				if (maxer==scores[i])
 				{
 					var targetId = "T"+i+"Score";
-					$('#'+targetId).attr("bgcolor","red");
+					$('#'+targetId).attr("class","btn btn-block span3 btn-danger");
 				}
 				else 
 				{
 					var targetId = "T"+i+"Score";
 					$('#'+targetId).removeAttr("bgcolor");	
+					$('#'+targetId).attr("class","btn btn-block span3");
 				}
 			}
 		}
